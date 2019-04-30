@@ -65,7 +65,7 @@ function getRandomColor(){
     blue = generateRandomHue();
     return 'rgb(' + red + ',' + green + ',' + blue + ')';
     }
-//The string that contains the randomColor is writen to the html id element for the background color.
+//The string that  contains the randomColor is writen to the html id element for the background color.
 function changeBackgroundColor() {
     document.getElementById("background_color").style.backgroundColor = getRandomColor();
     }
