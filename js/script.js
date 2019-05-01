@@ -11,10 +11,11 @@ project 1 - A Random Quote Generator
 
 
 //The var autoRefresh carries the method to call the printQuote function every 20 sec.
- var autoRefresh = window.setInterval(printQuote, 20000);
-
-
-
+var autoRefresh;
+function setTimeInterval() {
+  autoRefresh = window.setInterval(printQuote, 20000);
+ }
+setTimeInterval();
 //getRandomQuote creates a randomNumberwhich is matched with the number the array.
 // It returns an object with the data (keys and values) of the corresponding quote.
 function getRandomQuote() {
@@ -39,15 +40,13 @@ function printQuote() {
     message += "<span  class=\"category\">, " + quoteObject.category + "</span>";
     message += "</p>";
 //Below the created string is linked to the html.
-//It replaces the html. Therfor it was important to keep the html elements that are linked to the css.
+//It replaces the html. Therefor it was important to keep the html elements that are linked to the css (Thank you Robert for the hint!).
     document.getElementById("quote-box").innerHTML = message;
 //Below I call the function that changes the background color.
-//Also I set the interval to clean/null
-//I still have quetsions why 'null' is necessary here. As far as I couldn't find online this shouldn't be :-/
+//Also the interval is reset by cleaning it and calling the function again.
     changeBackgroundColor();
-     window.clearInterval(autoRefresh);
-     autoRefresh = null;
-     autoRefresh = window.setInterval(printQuote, 20000);
+    clearInterval(autoRefresh);
+    setTimeInterval();
 }
 
 //randomcolor code below. A random number is created withing the rgb range (256).
