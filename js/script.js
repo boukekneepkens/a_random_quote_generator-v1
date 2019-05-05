@@ -16,9 +16,9 @@ function setTimeInterval() {
   autoRefresh = window.setInterval(printQuote, 20000);
  }
 setTimeInterval();
-//getRandomQuote creates a randomNumberwhich is matched with the number the array.
+//getRandomQuote creates a randomNumber which is matched with the number of the quotes array.
 // It returns an object with the data (keys and values) of the corresponding quote.
-// NEW: instead of a variable I made a function to get the randomnumber. To call it again when all quotes have been selected.
+// NEW: instead of a variable I made a function to get the randomnumber. To call it again when all quotes have been selected once.
 function getRandomQuote() {
     function getRandomNumber() {
     Math.floor(Math.random() * quotes.length);
@@ -30,7 +30,7 @@ function getRandomQuote() {
     var usedRandomQuotes = [];
     usedRandomQuotes = usedRandomQuotes.push(randomQuote);
 // When all have been shown once: reset the quotes array
-    if (quotes = " ") {
+    if (quotes.length == 0) {
       quotes = usedRandomQuotes.splice(0, usedRandomQuotes.length);
       getRandomQuote();
     }
