@@ -18,13 +18,24 @@ function setTimeInterval() {
 setTimeInterval();
 //getRandomQuote creates a randomNumberwhich is matched with the number the array.
 // It returns an object with the data (keys and values) of the corresponding quote.
+// NEW: instead of a variable I made a function to get the randomnumber. To call it again when all quotes have been selected.
 function getRandomQuote() {
-
-    var randomNumber = Math.floor(Math.random() * quotes.length);
-    var randomQuote = quotes[randomNumber];
-    return randomQuote;
+    function getRandomNumber() {
+    Math.floor(Math.random() * quotes.length);
     }
-
+    var randomNumber = getRandomNumber();
+//To not duplicate a quote before all quotes have been shown once:
+//Cut it from the quotes array and push it too the usedRandomQuotes array using the .splice() method
+    var randomQuote = quotes.splice(randomNumber, 1);
+    var usedRandomQuotes = [];
+    usedRandomQuotes = usedRandomQuotes.push(randomQuote);
+// When all have been shown once: reset the quotes array
+    if (quotes = " ") {
+      quotes = usedRandomQuotes.splice(0, usedRandomQuotes.length);
+      getRandomNumber();
+    }
+    return randomQuote;
+  }
 //printQuote gets the values of the quote object and builds a string.
 function printQuote() {
     var quoteObject = getRandomQuote();
