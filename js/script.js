@@ -32,7 +32,7 @@ function getRandomQuote() {
 // When all have been shown once: reset the quotes array
     if (quotes = " ") {
       quotes = usedRandomQuotes.splice(0, usedRandomQuotes.length);
-      getRandomNumber();
+      getRandomQuote();
     }
     return randomQuote;
   }
