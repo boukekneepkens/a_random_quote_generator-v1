@@ -9,7 +9,7 @@ project 1 - A Random Quote Generator
 
 
 
-
+var usedRandomQuotes = [];
 //The var autoRefresh carries the method to call the printQuote function every 20 sec.
 var autoRefresh;
 function setTimeInterval() {
@@ -26,9 +26,8 @@ function getRandomQuote() {
     var randomNumber = getRandomNumber();
 //To not duplicate a quote before all quotes have been shown once:
 //Cut it from the quotes array and push it too the usedRandomQuotes array using the .splice() method
-    var randomQuote = quotes.splice(randomNumber, 1);
-    var usedRandomQuotes = [];
-    usedRandomQuotes = usedRandomQuotes.push(randomQuote);
+    var randomQuote = quotes.splice(randomNumber, 1)[0];
+    usedRandomQuotes.push(randomQuote);
 // When all have been shown once: reset the quotes array
     if (quotes.length == 0) {
       quotes = usedRandomQuotes.splice(0, usedRandomQuotes.length);
